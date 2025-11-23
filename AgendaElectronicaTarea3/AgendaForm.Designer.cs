@@ -47,11 +47,14 @@
             this.dgvContactos = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.cbGenero = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBuscarId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,6 +225,16 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(762, 393);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(50, 23);
+            this.btnBuscar.TabIndex = 22;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(304, 378);
@@ -270,16 +283,35 @@
             this.txtId.TabIndex = 26;
             this.txtId.TabStop = false;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(640, 399);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Buscar por ID:";
+            // 
+            // txtBuscarId
+            // 
+            this.txtBuscarId.Location = new System.Drawing.Point(718, 395);
+            this.txtBuscarId.Name = "txtBuscarId";
+            this.txtBuscarId.Size = new System.Drawing.Size(38, 20);
+            this.txtBuscarId.TabIndex = 28;
+            // 
             // AgendaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 450);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtBuscarId);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.cbGenero);
             this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvContactos);
@@ -328,11 +360,14 @@
         private System.Windows.Forms.DataGridView dgvContactos;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtBuscarId;
     }
 }
 

@@ -85,7 +85,7 @@ namespace AgendaElectronicaTarea3.CapaPresentacion
             if (int.TryParse(txtId.Text, out var id) && !string.IsNullOrWhiteSpace(txtId.Text))
             {
                 var c = repo.BuscarPorId(id);
-                if (c != null)
+                if (c != null) 
                 {
                     repo.Actualizar(LeerFormulario());
                     CargarDatos();
@@ -95,6 +95,16 @@ namespace AgendaElectronicaTarea3.CapaPresentacion
                 }
             }
             MessageBox.Show("No tiene un contacto seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtBuscarId.Text, out var id))
+            {
+                var c = repo.BuscarPorId(id);
+                if (c != null) CargarEnFormulario(c);
+                else MessageBox.Show("Contacto no encontrado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
