@@ -42,19 +42,81 @@ namespace AgendaElectronicaTarea3.CapaPresentacion
             dgvContactos.DataSource = bindingSource;
         }
 
+        private Contacto LeerFormulario()
+        {
+            Contacto c = new Contacto
+            {
+                Id = 0,
+                Nombre = txtNombre.Text,
+                Apellido = txtApellido.Text,
+                FechaNacimiento = dtpFechaNacimiento.Value.Date,
+                Direccion = txtDireccion.Text,
+                Genero = cbGenero.SelectedItem?.ToString() ?? "",
+                EstadoCivil = cbEstadoCivil.SelectedItem?.ToString() ?? "",
+                Movil = txtMovil.Text,
+                Telefono = txtTelefono.Text,
+                CorreoElectronico = txtCorreo.Text
+            };
+
+            if (int.TryParse(txtId.Text, out var id))
+            {
+                c.Id = id;
+            }
+
+            return c;
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //TODO
+            var c = LeerFormulario();
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("Debe de colocarle un nombre al contacto.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            repo.Insertar(c);
+            CargarDatos();
+            MessageBox.Show("Contacto añadido.");
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //TODO
+            if (int.TryParse(txtId.Text, out var id) && !string.IsNullOrWhiteSpace(txtId.Text))
+            {
+                var c = repo.BuscarPorId(id);
+                if (c != null)
+                {
+                    repo.Actualizar(LeerFormulario());
+                    CargarDatos();
+                    MessageBox.Show("Contacto actualizado.");
+                    //Limpiar();
+                    return;
+                }
+            }
+            MessageBox.Show("No tiene un contacto seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            //TODO
+            if (int.TryParse(txtId.Text, out var id))
+            {
+                var c = repo.BuscarPorId(id);
+                if (c != null)
+                {
+                    repo.Eliminar(id);
+                    MessageBox.Show("Contacto eliminado.");
+                    CargarDatos();
+                    Limpiar();
+                    return;
+                }
+            }
+            MessageBox.Show("No tiene un contacto seleccionado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void Limpiar()
+        {
+            txtId.Clear(); //txtNombre.Clear();
         }
 
         private void CargarEnFormulario(Contacto c)
