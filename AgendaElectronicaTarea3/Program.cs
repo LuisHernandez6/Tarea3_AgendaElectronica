@@ -68,6 +68,8 @@ namespace AgendaElectronicaTarea3.CapaPresentacion
                     cmd.ExecuteNonQuery();
                 }
             }
+
+            Application.Run(new AgendaForm());
         }
     }
 }
